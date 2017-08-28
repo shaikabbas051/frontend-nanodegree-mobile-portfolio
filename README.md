@@ -4,9 +4,10 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 
 To get started, check out the repository and inspect the code.
 
-### Getting started
+## Getting started
 
-#### Part 1: Optimize PageSpeed Insights score for index.html
+### Part 1: Optimize PageSpeed Insights score for index.html
+***
 
 Some useful tips to help you get started:
 
@@ -29,12 +30,36 @@ Some useful tips to help you get started:
 1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
 
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+### optimization
+> #### -Images
+* Images are compressed and resized using MS Picture Manager and some online compressing sites
+####  -css
+* **Inlined** style.css to html and also added **media="Print"** to the print.css stylesheet in order to avoid the render blocking css.
+#### -Js
+* Added **async** attribute to the script tag. And moved all scripts at the end of body
+### Score
+>For mobile:
+93/100
+For Desktop:
+93/100
+Track live score [here](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fshaikabbas051.github.io%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop)
 
-#### Part 2: Optimize Frames per Second in pizza.html
 
+### Part 2: Optimize Frames per Second in pizza.html
+***
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+### Optimizations
+## -css
+
+* Images are compressed using MS Picture Manager
+#### -Js
+* Selector (querySelector) are replaced by getElementById() and getElementByClass() accordingly for faster Web API call.
+* The layout Elements are defined outside the loop to avoid itteration each time. Hence, Optimized the response time.
+* The layout calculation are done outside the loop.
+* Background pizza  images are set such as there are reduced to atlesat 24
+* The main.js file is compressed using [The JavaScript Compression Too](https://jscompress.com/).
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
