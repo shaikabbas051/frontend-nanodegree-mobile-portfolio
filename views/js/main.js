@@ -538,8 +538,10 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  var windowHeight = window.outerHeight;
+  var backgroundPizzas = Math.ceil((windowHeight ) / (s )) * cols ;
   var movingPizzas = document.getElementById("movingPizzas1");//selector is modified
-  for (var i = 0; i < 200; i++) {  //variable is defined in the loop function itseld
+  for (var i = 0, elem; i < backgroundPizzas; i++) {  //variable is defined in the loop function itseld
     elem = document.createElement('img'); //no needed to add var = elem;
     elem.className = 'mover';
     elem.src = "images/pizza.png";
