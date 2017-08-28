@@ -60,6 +60,9 @@ You might find the FPS Counter/HUD Display useful in Chrome developer tools desc
 * The layout calculation are done outside the loop.
 * Background pizza  images are set such as there are reduced to atlesat 24
 * The main.js file is compressed using [The JavaScript Compression Too](https://jscompress.com/).
+### Frame Rate
+>50-60fps
+![FrameRate](http://img/frames.png)
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
