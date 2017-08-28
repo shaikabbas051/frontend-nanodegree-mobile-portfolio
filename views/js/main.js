@@ -463,7 +463,7 @@ var resizePizzas = function(size) {
         console.log("bug");
     }
   var randomPizzas = document.getElementsByClassName("randomPizzaContainer"); //querySelectorAll is replayced by getElementsByClassName for fast response
-  var pizzaLength = randomPizzas.length//Layout is moved outside the loop(not to itterate for each loop) this prevents forced synchronize layout
+  var pizzaLength = randomPizzas.length;//Layout is moved outside the loop(not to itterate for each loop) this prevents forced synchronize layout
     for (var i = 0; i < pizzaLength; i++) {
       randomPizzas[i].style.width = newWidth + "%";//randomPizzaContainer is now accessed outside the loop
     }
@@ -531,19 +531,16 @@ function updatePositions() {
   }
 }
 
-// runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
-
 // Generates the sliding pizzas when the page loads.
-document.addEventListener('DOMContentLoaded', function() {
+function generateBackground() {
   var cols = 8;
   var s = 256;
   //windows size
   var windowHeight = window.outerHeight;
-  var backgroundPizzas = Math.ceil((windowHeight ) / (s)) * cols ;
+  var backgroundPizzas = Math.ceil(windowHeight / s) * cols ;
   var movingPizzas = document.getElementById("movingPizzas1");//selector is modified
-  for (var i = 0, elem; i < backgroundPizzas; i++) {  //variable is defined in the loop function itseld
-    elem = document.createElement('img'); //no needed to add var = elem;
+  for (var i = 0; i < backgroundPizzas; i++) {  //variable is defined in the loop function itseld
+    var elem = document.createElement('img'); //no needed to add var = elem;
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
@@ -553,4 +550,8 @@ document.addEventListener('DOMContentLoaded', function() {
     movingPizzas.appendChild(elem);//movingPizzas is defined outside the loop (no needed to get element in loops)
   }
   updatePositions();
-});
+};
+
+// runs updatePositions on scroll
+window.addEventListener('scroll', updatePositions);
+document.addEventListener('DOMContentLoaded', generateBackground)
