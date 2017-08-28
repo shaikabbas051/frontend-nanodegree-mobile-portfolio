@@ -550,8 +550,8 @@ function generateBackground() {
     movingPizzas.appendChild(elem);//movingPizzas is defined outside the loop (no needed to get element in loops)
   }
   updatePositions();
-};
+}
 
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
-document.addEventListener('DOMContentLoaded', generateBackground)
+document.addEventListener('DOMContentLoaded', generateBackground);
