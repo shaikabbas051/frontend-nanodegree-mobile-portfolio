@@ -31,9 +31,9 @@ Some useful tips to help you get started:
 
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 ### optimization
-> #### -Images
+#### -Images
 * Images are compressed and resized using MS Picture Manager and some online compressing sites
-####  -css
+#### -CSS
 * **Inlined** style.css to html and also added **media="Print"** to the print.css stylesheet in order to avoid the render blocking css.
 #### -Js
 * Added **async** attribute to the script tag. And moved all scripts at the end of body
@@ -41,7 +41,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 >For mobile:
 93/100
 For Desktop:
-93/100
+93/100  
 Track live score [here](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fshaikabbas051.github.io%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop)
 
 
@@ -51,8 +51,7 @@ To optimize views/pizza.html, you will need to modify views/js/main.js until you
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 ### Optimizations
-## -css
-
+### -css
 * Images are compressed using MS Picture Manager
 #### -Js
 * Selector (querySelector) are replaced by getElementById() and getElementByClass() accordingly for faster Web API call.
@@ -61,8 +60,8 @@ You might find the FPS Counter/HUD Display useful in Chrome developer tools desc
 * Background pizza  images are set such as there are reduced to atlesat 24
 * The main.js file is compressed using [The JavaScript Compression Too](https://jscompress.com/).
 ### Frame Rate
->50-60fps
-![FrameRate](http://img/frames.png)
+>50-60fps  
+![FrameRate](img/frames.png)
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
