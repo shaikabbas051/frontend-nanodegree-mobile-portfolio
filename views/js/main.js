@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";//selector modified
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";//selector modified
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";//selector modified
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -424,7 +424,7 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    var windowWidth = document.getElementById("randomPizzas").offsetWidth;//modified selector id randomPizzas
     var oldSize = oldWidth / windowWidth;
 
     // Changes the slider value to a percent width
@@ -462,10 +462,10 @@ var resizePizzas = function(size) {
         default:
         console.log("bug");
     }
-  var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-
-    for (var i = 0; i < randomPizzas.length; i++) {
-      randomPizzas[i].style.width = newWidth + "%";
+  var randomPizzas = document.getElementsByClassName("randomPizzaContainer"); //querySelectorAll is replayced by getElementsByClassName for fast response
+  var pizzaLength = randomPizzas.length//Layout is moved outside the loop(not to itterate for each loop) this prevents forced synchronize layout
+    for (var i = 0; i < pizzaLength; i++) {
+      randomPizzas[i].style.width = newWidth + "%";//randomPizzaContainer is now accessed outside the loop
     }
   }
 
@@ -481,9 +481,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");//querySelectorAll is replayced by getElementsById and the element moved out the loop by adding new variable
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
-  pizzasDiv.appendChild(pizzaElementGenerator(i));
+  pizzasDiv.appendChild(pizzaElementGenerator(i));//no needed to calculate in each loop
 }
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
@@ -514,9 +514,10 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');//selector statement is modified for faster response
+  var top = document.body.scrollTop / 1250;// calculation is made outside the loop to save the work(no needed to loop)
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((top) + (i % 5));//simplified with var=top; reduces some work
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -537,15 +538,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  var movingPizzas = document.getElementById("movingPizzas1");//selector is modified
+  for (var i = 0; i < 200; i++) {  //variable is defined in the loop function itseld
+    elem = document.createElement('img'); //no needed to add var = elem;
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);//movingPizzas is defined outside the loop (no needed to get element in loops)
   }
   updatePositions();
 });
